@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Small website with Bootstrap and JQuery</title>
+    <script>
+        $(document).ready(function(){
+            //$("#setUsuario").click(function(){
+              //  $("#nombreTabla").html($("#nombreUsuario").val());
+            //});
+            $("#setUsuario").click(function(){
+                $.get("https://api.github.com/users/"+$("#nombreUsuario").val()+"/repos",function(data){
+                    for(i=0;JSON.stringify(data.length);i++){
+                        $("#nombreTabla"+i).text(JSON.stringify(data[i].name));
+                        $("#descripcionTabla"+i).text(JSON.stringify(data[i].description));
+                        $("#seguidoresTabla"+i).text(JSON.stringify(data[i].stargazers_count));
+                    };
+                });
+            });
+            $("#setUsuario").click(function(){
+                $("#seguidoresTabla").html($("#nombreUsuario").val());
+            });
+            $("#setUsuario").click(function(){
+                $("#pruebaTabla").html($("#nombreUsuario").val());
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="etiquetas">
+<p id="comentario1">Escribe en el recudro un nombre de usuario de GitHub</p>
+<p>Escribe un usuario de GitHub: <input type="text" id="nombreUsuario"></p>
+<p id="sitioSetUsuario"></p>
+<button id="setUsuario">OK</button>
+</div>
+<div class="tabla">
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Seguidores</th>
+            <th>Prueba</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td id="nombreTabla0"></td>
+            <td id="descripcionTabla0"></td>
+            <td id="seguidoresTabla0"></td>
+            <td id="pruebaTabla0"></td>
+        </tr>
+        <tr>
+            <td id="nombreTabla1"></td>
+            <td id="descripcionTabla1"></td>
+            <td id="seguidoresTabla1"></td>
+            <td id="pruebaTabla1"></td>
+        </tr>
+        <tr>
+            <td id="nombreTabla2"></td>
+            <td id="descripcionTabla2"></td>
+            <td id="seguidoresTabla2"></td>
+            <td id="pruebaTabla2"></td>
+        </tr>
+        <tr>
+            <td id="nombreTabla3"></td>
+            <td id="descripcionTabla3"></td>
+            <td id="seguidoresTabla3"></td>
+            <td id="pruebaTabla3"></td>
+        </tr>
+        <tr>
+            <td id="nombreTabla4"></td>
+            <td id="descripcionTabla4"></td>
+            <td id="seguidoresTabla4"></td>
+            <td id="pruebaTabla4"></td>
+        </tr>
+        <tr>
+            <td id="nombreTabla5"></td>
+            <td id="descripcionTabla5"></td>
+            <td id="seguidoresTabla5"></td>
+            <td id="pruebaTabla5"></td>
+        </tr>
+        <tr>
+            <td id="nombreTabla6"></td>
+            <td id="descripcionTabla6"></td>
+            <td id="seguidoresTabla6"></td>
+            <td id="pruebaTabla6"></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>
